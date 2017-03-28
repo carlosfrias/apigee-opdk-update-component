@@ -22,6 +22,6 @@
       shell: '{{ apigee_all }} start'
       when: opdk_version | version_compare('4.16.01', '>=')
 
-- name: Validating component status a second time
-  shell: '{{ apigee_all }} status'
-  when: opdk_version | version_compare('4.16.01', '>=')
+#- name: Validating component status a second time
+#  shell: '{{ apigee_all }} status'
+#  when: opdk_version | version_compare('4.16.01', '>=')
