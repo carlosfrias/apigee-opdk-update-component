@@ -14,13 +14,13 @@
 
   rescue:
 
-    - name: Validate status failed, trying component start...
-      shell: '{{ apigee_all }} start'
-      when: opdk_version | version_compare('4.16.01', '>=')
-
     - name: Small time delay for component boot, change with -e component_start_delay=
       pause:
         seconds: '{{ component_start_delay | default(1) }}'
+
+    - name: Validate status failed, trying component start...
+      shell: '{{ apigee_all }} start'
+      when: opdk_version | version_compare('4.16.01', '>=')
 
 - name: Validating component status a second time
   shell: '{{ apigee_all }} status'
