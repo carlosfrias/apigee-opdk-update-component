@@ -8,6 +8,9 @@
   - name: Perform component update - {{ apigee_component }}
     shell: '{{ apigee_update }} -c {{ apigee_component }} -f {{ opdk_installation_config_file }}'
 
+  - name: Wait for ready
+    shell: '{{ apigee_all }} wait_for_ready'
+
   - name: Validate component status
     shell: '{{ apigee_all }} status'
     when: opdk_version | version_compare('4.16.01', '>=')
