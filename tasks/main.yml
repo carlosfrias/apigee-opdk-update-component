@@ -15,10 +15,12 @@
   rescue:
 
     - name: Validate status failed, trying component start...
+      ignore_errors: "{{ ignore_errors | default(false) }}"
       shell: '{{ apigee_all }} start'
       when: opdk_version | version_compare('4.16.01', '>=')
 
     - name: Wait for ready
+      ignore_errors: "{{ ignore_errors | default(false) }}"
       shell: '{{ apigee_all }} wait_for_ready'
       when: validate_ready | default(true)
 
