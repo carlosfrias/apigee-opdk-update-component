@@ -25,5 +25,6 @@
       when: validate_ready | default(true)
 
 - name: Validating component status
+  ignore_errors: "{{ ignore_errors | default(false) }}"
   shell: '{{ apigee_all }} status'
   when: opdk_version | version_compare('4.16.01', '>=')
