@@ -8,6 +8,7 @@
   - name: Wait for ready
     shell: '{{ apigee_all }} wait_for_ready'
     when: validate_ready | default(true)
+    ignore_errors: yes
 
   rescue:
 
