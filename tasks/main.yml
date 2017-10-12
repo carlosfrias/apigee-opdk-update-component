@@ -1,10 +1,6 @@
 ---
 # tasks file for opdk-update-component
 - block:
-
-  - name: Update apigee-setup
-    shell: '{{ apigee_service }} apigee-setup update'
-
   - name: Perform component update - {{ apigee_component }}
     shell: '{{ apigee_update }} -c {{ component }} -f {{ opdk_installation_config_file }}'
 
