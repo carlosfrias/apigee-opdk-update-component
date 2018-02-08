@@ -3,12 +3,12 @@
 - block:
   - name: Perform component update - {{ apigee_component }}
     shell: '{{ apigee_update }} -c {{ component }} -f {{ opdk_installation_config_file }}'
-    ignore_errors: yes
+#    ignore_errors: yes
 
   - name: Wait for ready
     shell: '{{ apigee_all }} wait_for_ready'
     when: validate_ready | default(true)
-    ignore_errors: yes
+#    ignore_errors: yes
 
   rescue:
 
@@ -23,6 +23,6 @@
       when: validate_ready | default(true)
 
 - name: Validating component status
-  ignore_errors: "{{ ignore_errors | default(false) }}"
+#  ignore_errors: "{{ ignore_errors | default(false) }}"
   shell: '{{ apigee_all }} status'
   when: validate_ready | default(true) and opdk_version | version_compare('4.16.01', '>=')
