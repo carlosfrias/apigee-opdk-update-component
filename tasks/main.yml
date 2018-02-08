@@ -1,26 +1,27 @@
 ---
 # tasks file for opdk-update-component
-- block:
-  - name: Perform component update - {{ apigee_component }}
-    shell: '{{ apigee_update }} -c {{ component }} -f {{ opdk_installation_config_file }}'
+#- block:
+- name: Perform component update - {{ apigee_component }}
+  shell: '{{ apigee_update }} -c {{ component }} -f {{ opdk_installation_config_file }}'
 #    ignore_errors: yes
 
-  - name: Wait for ready
-    shell: '{{ apigee_all }} wait_for_ready'
-    when: validate_ready | default(true)
-#    ignore_errors: yes
+#  - name: Wait for ready
+#    shell: '{{ apigee_all }} wait_for_ready'
+#    when: validate_ready | default(true)
+##    ignore_errors: yes
 
-  rescue:
+#  rescue:
 
-    - name: Validate status failed, trying component start...
-      ignore_errors: "{{ ignore_errors | default(false) }}"
-      shell: '{{ apigee_all }} start'
-      when: opdk_version | version_compare('4.16.01', '>=')
+#    - name: Validate status failed, trying component start...
+- name: Validate status failed, trying component start...
+  shell: '{{ apigee_all }} start'
+  when: opdk_version | version_compare('4.16.01', '>=')
+#      ignore_errors: "{{ ignore_errors | default(false) }}"
 
-    - name: Wait for ready
-      ignore_errors: "{{ ignore_errors | default(false) }}"
-      shell: '{{ apigee_all }} wait_for_ready'
-      when: validate_ready | default(true)
+#    - name: Wait for ready
+#      ignore_errors: "{{ ignore_errors | default(false) }}"
+#      shell: '{{ apigee_all }} wait_for_ready'
+#      when: validate_ready | default(true)
 
 - name: Validating component status
 #  ignore_errors: "{{ ignore_errors | default(false) }}"
