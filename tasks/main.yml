@@ -1,7 +1,7 @@
 ---
 # tasks file for opdk-update-component
 #- block:
-- name: Perform component update - {{ apigee_component }}
+- name: Perform component update
   shell: '{{ apigee_update }} -c {{ component }} -f {{ opdk_installation_config_file }}'
 
 - name: Validate component starts
