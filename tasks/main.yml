@@ -3,6 +3,7 @@
 #- block:
 - name: Perform component update
   become: true
+  become_user: root
   shell: '{{ apigee_update }} -c {{ component }} -f {{ opdk_installation_config_file }}'
   environment:
     http_proxy: "{{ http_proxy }}"
