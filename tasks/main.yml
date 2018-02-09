@@ -3,23 +3,19 @@
 #- block:
 - name: Perform component update
   become: true
-  become_user: "{{ opdk_user_name }}"
   shell: '{{ apigee_update }} -c {{ component }} -f {{ opdk_installation_config_file }}'
 
 - name: Validate component starts
   become: true
-  become_user: "{{ opdk_user_name }}"
   shell: '{{ apigee_all }} start'
   when: opdk_version | version_compare('4.16.01', '>=')
 
 - name: Wait for ready
   become: true
-  become_user: "{{ opdk_user_name }}"
   shell: '{{ apigee_all }} wait_for_ready'
   when: validate_ready | default(true)
 
 - name: Component status
   become: true
-  become_user: "{{ opdk_user_name }}"
   shell: '{{ apigee_all }} status'
   when: validate_ready | default(true) and opdk_version | version_compare('4.16.01', '>=')
