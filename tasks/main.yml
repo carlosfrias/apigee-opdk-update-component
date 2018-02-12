@@ -4,7 +4,7 @@
 - name: Perform component update
   become: true
   become_user: root
-  shell: '{{ apigee_update }} -c {{ component }} -f {{ opdk_installation_config_file }}'
+  shell: '/opt/apigee/apigee-setup/bin/update.sh -c {{ component }} -f {{ opdk_installation_config_file }}'
   environment:
     http_proxy: "{{ http_proxy }}"
     https_proxy: "{{ https_proxy }}"
