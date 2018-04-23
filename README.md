@@ -1,7 +1,7 @@
 Apigee OPDK Update Component
 =========
 
-This repository contains an Ansible role to perform an update to a component of the Apigee platform. 
+This repository contains an Ansible role to perform an update to the version of a component of the Apigee platform. 
 
 Requirements
 ------------
