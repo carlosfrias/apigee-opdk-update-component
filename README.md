@@ -11,7 +11,15 @@ Previous installation of the Apigee platform on the node.
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+| Variable Name | Description |
+| --- | --- |
+| component | The component name to pass into the update.sh script |
+| opdk_installation_config_file | Response file used to install Apigee |
+| http_proxy | http proxy endpoint |
+| https_proxy | https proxy endpoint |
+| no_proxy | no proxy to be set when working with a proxy |
+| PORT_TIMEOUT | Update the port timeout setting in the Apigee update script |
+| UP_TIMEOUT | Update the setting in the Apigee update script waiting for the component to come up |
 
 Dependencies
 ------------
